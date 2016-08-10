@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Paoli Time</title>
+  </head>
+  <body>
+    <h1>Suburban Station</h1>
+    <table id="suburban-table">
+      <tr>
+        <td>10:04 AM</td><td>Malvern</td><td>On Time</td>
+      </tr>
+    </table>
+    
+    <h1>Paoli</h1>
+    
+    <!--CSS-->
+    <style>
+      body {
+        font-family: 'Helvetica Neue', Helvetica, sans-serif;
+      }
+      
+      #suburban-table {
+        margin-bottom: 40px;
+      }
+      
+      td {
+        font-size: 20px;
+        width: 150px;
+      }
+    </style>
+    
+    <!--JavaScript-->
+    <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script>
+      function refresh() {
+        // Make API calls
+        $.ajax({
+          url: '//www3.septa.org/hackathon/Arrivals/90005/10/',
+          success: function (data) {
+            console.log(data)
+          },
+          error: function (err) {
+            console.log(err)
+          },
+        })
+      }
+      
+      $(function () {
+        refresh()
+        setInterval(refresh, 30000)
+      })
+    </script>
+  </body>
+</html>
